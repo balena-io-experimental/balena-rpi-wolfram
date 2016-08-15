@@ -1,0 +1,13 @@
+FROM resin/%%RESIN_MACHINE_NAME%%-debian
+
+MAINTAINER Gergely Imreh <gergely@resin.io>
+
+ENV INITSYSTEM on
+
+WORKDIR /usr/src/app
+
+RUN apt-get update && \
+    apt-get install wolfram-engine \
+    && apt-cache clean && rm -rf /var/lib/apt/lists
+
+CMD while : ; do echo "Idling..."; sleep 60; done
