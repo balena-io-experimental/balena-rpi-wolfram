@@ -6,8 +6,9 @@ ENV INITSYSTEM on
 
 WORKDIR /usr/src/app
 
-RUN apt-get update && \
-    apt-get install -qy --force-yes --no-install-recommends  \
+RUN echo debconf shared/accepted-wolfram-eula select true | debconf-set-selections && \
+    apt-get update && \
+    apt-get install -qy --no-install-recommends  \
       wolfram-engine \
     && apt-cache clean && rm -rf /var/lib/apt/lists
 
