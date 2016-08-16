@@ -8,6 +8,8 @@ modprobe i2c-dev
 touch /boot/config.txt
 
 while : ; do
-  echo "Idling..."
-  sleep 60
+  wolfram -script scripts/gpio_high.m
+  sleep 5
+  wolfram -script scripts/gpio_low.m
+  sleep 5
 done
